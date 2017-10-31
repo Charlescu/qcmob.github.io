@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>函数</title>
+<link>
+</head>
+<body>
+<script type="text/javascript">
+  //函数可以在<script>标签中调用
+  //在HTML文件中调用
+
+函数分为有参函数和无参函数，
+function 函数名（参数1，参数2）{
+	代码块
+}
+注意：参数可以有多个，根据需要增减参数个数，参数之间用逗号隔开
+</script>
+</body>
+</html>

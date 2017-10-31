@@ -1,0 +1,23 @@
+ <!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+  <script type="text/javascript">  
+  
+    var myarr = new Array();  //声明一维数组
+     for(var i= 0;i<3;i++){     //一维长度为3
+      myarr[i] = new Array(); //声明二维数组
+      for(var j=0；j<6;j++){  //二维长度为6
+          myarr[i][j] = i*j;   //为数组赋值
+          document.write("myarr["+i+"]["+j+"]的值"+myarr[i][j]+"<br/>");
+      }
+  }
+
+  </script> 
+ </head> 
+ <body> 
+	  <input type="button" value="新窗口打开网站" onclick="openWindow()" /> 
+ </body>
+</html>
+  
