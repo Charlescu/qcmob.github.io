@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="taxt/html;charset=UTF-8">
+</head>
+<body>
+
+<input type="text" id="input" >
+<input type="button" onclick="calculate()" value="计算"></br>
+<input type="text" placeholder="计算结果" id ="result">
+
+<script type="text/javascript">
+//斐波纳挈函数，兔子问题
+//非递归
+function fb(n){
+    var a,b,res;
+    a = b = 1;
+    if(n==1||n==2){
+        return 1;
+    }
+    for(var i=3;i<=n;i++){
+        res = a + b;
+        a = b;
+        b = res;
+    }
+    return res;
+}
+//  alert(fb(2));
+ 
+
+
+ //递归
+  function fib(n){
+    if(n==1||n==2){
+        return 1;
+    }
+    return fib(n-1)+fib(n-2);
+}
+ // alert(fib(10));
+
+  function calculate(){
+  		var n = document.getElementById('input').value;
+  		document.getElementById('result').value = fib(n);
+  }
+</script>
+
+<script type="text/javascript">
+//判断101-102之间质数并输出
+
+</script>
+</body>
+</html>

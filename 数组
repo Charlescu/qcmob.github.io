@@ -1,0 +1,15 @@
+<html>
+<tltle>JavaScript进阶</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8>
+<head>
+<body>
+
+//数组 Array
+<script type="text/javascript">
+   var myarr = new Array(8);
+    alert(myarr[0]);
+</script>
+
+</body>
+</html>

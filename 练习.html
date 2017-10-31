@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+  <script type="text/javascript">  
+       function openWindow(){
+          var opw=confirm("是否打开新的窗口");
+          if(opw==true){
+            var op=prompt("请输入正确的网址","http://www.imooc.com");
+              if (op=='http://www.imooc.com'){
+                window.open('http://www.imooc.com','_blank','width=400px,height=500px,menubar=no,toolbar=no');
+              }
+           
+          }
+        }
+    // 新窗口打开时弹出确认框，是否打开
+
+    // 通过输入对话框，确定打开的网址，默认为 http：//www.imooc.com/
+
+    //打开的窗口要求，宽400像素，高500像素，无菜单栏、无工具栏。
+    
+   //答案一
+    function openWindow(){
+         var k_open;
+         var temp=confirm("是否要打开新的网页？");
+      if(temp){   
+        k_open=prompt("请输入你要打开的网址：","http://www.imooc.com/");
+       window.open(k_open,'_blank','width=400,height=500,menubar=no,toolbar=no');
+        }
+      }
+      
+   //答案二
+   function openWindow(){ 
+    if(confirm("确定打开新窗口吗？")){
+    var url = prompt("请输入一个网址","http://www.imooc.com/");  
+    window.open( url,"_blank","toolbar=no, menubar=no, scrollbars=yes,  width=400, height=400");
+    }
+
+    } 
+  </script> 
+ </head> 
+ <body> 
+	  <input type="button" value="新窗口打开网站" onclick="openWindow()" /> 
+ </body>
+</html>
