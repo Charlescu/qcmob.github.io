@@ -12,3 +12,10 @@ var objectName = [];
 objectName.propertyName
 访问对象的方法：
 objectName.methodName()
+
+Date对象
+日期对象可以存储任意一个日期，并且可以精确到毫秒数（1/1000）。
+
+定义一个时间对象：
+var Udate =  new Date(); // 使用关键字new,Date()首字母必须大写。
+
