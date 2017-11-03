@@ -19,3 +19,14 @@ Date对象
 定义一个时间对象：
 var Udate =  new Date(); // 使用关键字new,Date()首字母必须大写。
 
+访问方语法：“<日期对象>.<方法>”
+
+Date对象中处理时间和日期的常用方法：
+get/setDate()          返回 设置日期
+get/setFullYear()      返回 设置年份，用四位数表示
+get/setYear()          返回 设置年份 //推荐废弃，返回值不确定
+get/setMonth()         返回 设置月份  0:一月...11:十二月
+get/setHours()         返回 设置小时   24小时制
+get/setMinutes()       返回 设置分钟数
+get/setSeconds()       返回 设置秒钟数
+get/setTime()          返回 设置时间（毫秒为单位）
