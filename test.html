@@ -8,12 +8,26 @@
     var myarr = new Array();  //声明一维数组
      for(var i= 0;i<3;i++){     //一维长度为3
       myarr[i] = new Array(); //声明二维数组
-      for(var j=0；j<6;j++){  //二维长度为6
-          myarr[i][j] = i*j;   //为数组赋值
+      for(var j=0;j<6;j++){  //二维长度为6
+          myarr[i][j] = new Array();   //为数组赋值
+          myarr[i][j] = i*j;
           document.write("myarr["+i+"]["+j+"]的值"+myarr[i][j]+"<br/>");
       }
   }
+  
+  var mydate = new Date();
+     document.write(mydate+"<br/>");
+     document.write(mydate.getFullYear()+"<br/>");
+     mydate.setFullYear(81);
+     document.write(mydate+"<br/>");
 
+
+  var mydate=new Date();//定义日期对象
+  var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];//定义数组对象,给每个数组项赋值
+  var mynum=mydate.getDay();//返回值存储在变量mynum中
+  document.write(mydate.getDay());//输出getDay()获取值
+  document.write("今天是："+ weekday[mynum]);//输出星期几
+  
   </script> 
  </head> 
  <body> 
