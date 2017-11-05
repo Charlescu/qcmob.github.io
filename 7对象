@@ -13,6 +13,7 @@ objectName.propertyName
 访问对象的方法：
 objectName.methodName()
 
+
 Date对象
 日期对象可以存储任意一个日期，并且可以精确到毫秒数（1/1000）。
 
@@ -22,7 +23,7 @@ var Udate =  new Date(); // 使用关键字new,Date()首字母必须大写。
 访问方语法：“<日期对象>.<方法>”
 
 Date对象中处理时间和日期的常用方法：
-get/setDate()          返回 设置日期
+get/setDate()          返回 设置日期得到当月的日期数
 get/setFullYear()      返回 设置年份，用四位数表示
 get/setYear()          返回 设置年份 //推荐废弃，返回值不确定**************!!!!!!!!
 get/setMonth()         返回 设置月份  0:一月...11:十二月
@@ -35,3 +36,18 @@ get/setTime()          返回 设置时间（毫秒为单位）
       getFullYear()  得到结果格式分别为星期、月、日、年、时、分、秒、时区
 
     getDay()   返回星期，返回的是0-6的数字，0表示星期天，6表示星期一；
+
+   get/setTime()   返回/设置时间，单位毫秒数。计算从1970年1月1日零时到日期对象所指的日期的毫秒数。
+
+
+String字符串对象
+定义字符串的方法就是直接赋值，例如：
+var mystr = "这是一个字符串";
+
+访问字符串对象的属性length：  //以及constructorh和property属性
+StringObject.length;  //返回该字符串的长度。
+
+访问字符串对象的方法：
+StringObject.fangfa();
+ 
+Math
