@@ -1,0 +1,8 @@
+1、Doctype 的作用
+doctype在一个HTML文件中处于最高的头部，它规定了HTML文件的类型，决定了浏览器以什么标准对此文档渲染。
+在HTML4.01版本有三种类型，分别是 Strict，Transitional，Frameset
+DOCTYPE 声明不是 HTML 标签；它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令。
+在 HTML 4.01 中，DOCTYPE声明引用 DTD，因为 HTML 4.01 基于 SGML。DTD 规定了标记语言的规则，这样浏览器才能正确地呈现内容。
+HTML5 不基于 SGML，所以不需要引用 DTD。
+
+2、
