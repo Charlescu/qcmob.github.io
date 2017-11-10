@@ -1,0 +1,51 @@
+Http协议的无状态性：
+无状态是指当浏览器发送请求给服务器的时候，服务器响应客户端的请求。但是当同一个浏览器再次发送请求给服务器的时候，服务器并不知道它就是刚才的浏览器。服务器并不会记住是哪个客户端发送了请求，所以就是无状态协议。
+
+保存用户状态的两大机制：session和cookie
+
+cookie:
+是web服务器保存在客户端的一系列文本信息。
+
+cookie作用：
+1、对特定对象的跟踪
+2、保存用户页面浏览记录与习惯
+3、简化登录
+风险:容易泄露用户的信息
+
+
+JSP中创建与使用Cookie
+创建Cookie对象：
+Cookie newCookie = new Cookie(String key.Object value);
+写入Cookie对象
+response.addCookie(newCookie);
+读取Cookie对象
+Cookie[] cookies = request.getCookies();
+
+Cookie常用方法：
+void setMaxAge(int expiry)：设置cookie的有效期，以秒为单位。不设置有效期Cookie的有效期为当前会话。
+void setValue(String value)：在cookie创建后，对cookie进行赋值
+String getName()：获取Cookie的名称
+String getValue()：获取Cookie的值
+int getMaxAge()：获取Cookie的有效时间，以秒为单位
+void setPath(request.getContextPath()+"/路径"):设置携带cookie的请求路径
+
+注意：当使用Cookie进行保存用户名密码时需要注意中文名称的保存，当不做任何处理，用Cookie保存中文会报错。这里需要对中文进行编码和解码，
+用到的包java.net.*，用到URLEncoder这个类.
+
+特性：
+Cookie具有不可跨域名性。根据Cookie规范，浏览器访问Google只会携带Google的Cookie，而不会携带Baidu的Cookie。Google也只能操作Google的Cookie，而不能操作Baidu的Cookie。
+Cookie存在上限，不同的浏览器规定了同一个域名下最多可设置cookie的个数。
+
+session和cookie的区别：
+http://www.cnblogs.com/linguoguo/p/5106618.html
+1、session在服务器端保存用户信息，cookie在客户端保存用户信息
+2、session中保存的是Object类型，cookie保存的是String类型
+3、随会话的结束而将其存储的数据销毁，Cookie可以保存在客户端
+4、保存重要的信息，保存不重要的信息。
+
+
+
+
+
+
+
