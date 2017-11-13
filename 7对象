@@ -44,10 +44,56 @@ String字符串对象
 定义字符串的方法就是直接赋值，例如：
 var mystr = "这是一个字符串";
 
-访问字符串对象的属性length：  //以及constructorh和property属性
+访问字符串对象的属性length：  //以及constructor和prototype属性
 StringObject.length;  //返回该字符串的长度。
 
 访问字符串对象的方法：
 StringObject.fangfa();
- 
-Math
+   
+   String对象的方法：
+   anchor()   创建HTML锚
+
+Math对象
+math对象，提供对数据的数据计算。
+注意：math是一个固有对象，无需创建它，直接把math作为对象使用就可以调用其所有的属性和方法。这是它与Date和String对象的区别。
+
+例如： var mypi = Math.PI;
+       var mydate = new Date();
+       myday = mydate.getFullYear();
+
+  Math对象的属性：
+   E        返回算数常量，即自然对数的底数（约等于2.718）；
+   LN2      返回2的自然对数（约等于0.693）；
+   LN10     返回10的自然对数（约等于2.302）；
+   LOG2E    返回以2为底的e的对数（约等于1.442）；
+   LOG10E   返回以10为底的对数（约等于0.434）；
+   PI       返回圆周率（约等于3.14159）；
+   SQRT1_2  返回2的平方根的倒数（约等于0.707）；
+   SQRT2    返回2的平方根（约等于1.414）；
+
+  Math对象的方法：
+   abs(x)    返回数的绝对值；
+   max(x,y)  返回x和y中的最高值；
+   min(x,y)  返回x和y中的最低值；
+
+   acos(x)   返回数的反余弦值；
+   asin(x)   返回数的反正弦值；
+   atan(x)   返回数的反正切值(取值为-PI/2到PI/2之间的弧度值)；
+   atan2(y,x)  返回由X轴到点（x,y）的角度（弧度为单位）；
+   cos(x)    返回数的余弦；
+   sin(x)    返回数的正弦；
+   tan(x)    返回角的正切；
+
+   round(x)  把数四合五入为最接近的整数字；
+   ceil(x)   对数进行上舍入运算；（不是四舍五入）
+   floor(x)  对数进行下舍入运算；
+   
+   exp(x)    返回e的指数幂的值；
+   log(x)    返回数的自然对数（底为e）；
+   pow(x,y)  返回x的y次幂；
+   sqrt(x)   返回数的平方根；
+
+   random()  返回0~1之间的随机数；（括号中为空）
+  
+   toSource() 返回该对象的源代码；
+   valueOf()  返回Math对象的原始值；
