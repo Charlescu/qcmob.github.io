@@ -55,3 +55,19 @@ setTimeout()计时器，在载入后延迟指定时间后，去执行一次表�
   语法：clearTimeout(id_of_setTimeout)
   参数说明:
      id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
+
+     例：
+      var num=0;
+      var i;
+     function startCount(){
+         document.getElementById('count').value=num;
+           num=num+1;
+           i=setTimeout("startCount()",1000);
+        }
+       function stopCount(){
+           clearTimeout(i);
+        }
+
+    <input type="text" id="count" />
+    <input type="button" value="Start" onclick="startCount()" />
+    <input type="button" value="Stop"  onclick="stopCount()" />
