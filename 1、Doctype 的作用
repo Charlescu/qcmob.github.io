@@ -11,4 +11,5 @@ Transitional
  该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
 Frameset
  该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。允许框架集（Framesets）。
+ 
 2、

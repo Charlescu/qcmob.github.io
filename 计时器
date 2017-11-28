@@ -1,0 +1,57 @@
+计时器1
+setInterval()
+
+在执行时，从载入页面后每隔指定的时间执行代码
+
+语法：
+    setInterval(代码，交互时间)；
+ 参数说明：
+  1.代码：要调用的函数或要执行的代码串。
+  2.交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）.
+
+ 返回值：一个可以传递给clearInterval()从而取消对"代码"的周期性执行的值。
+
+ 调用函数格式
+
+ setInterval("click()",时间)或者setInterval(click,时间)
+
+ 例子：
+        var i = setInterval("clock()",1000) //每隔1000毫秒调用一次clock函数，并将返回值赋值给i;
+        function clock(){
+           var time = new Date();
+           document.getElementById("clock").value=time;
+        }
+        <input id="clock">
+        <input onclick="clearInterval(i)">   //点击清除计时器
+
+ 取消计时器clearInterval()
+ clearInterval()方法可取消由setInterval()设置的交互时间。
+ 语法：
+    clearInterval(id_of_setInterval);
+  参数说明：
+    id_of_setInterval:由setInterval()返回的id值。
+
+计时器2 
+setTimeout()计时器，在载入后延迟指定时间后，去执行一次表达式，仅执行一次。
+语法：setTimeout(代码，延迟时间);
+
+参数说明：
+1.要调用的函数或要执行的代码串；
+2.延迟时间：在执行代码前需等待的时间，以毫秒为单位().
+
+  例：
+      function start(){
+      var num=0;
+       num++;
+       setTimeout("start()",1000);
+      }
+     <input type="button" onclick="start()"/>
+      外部设置一个启动器，启动计时器即可；
+
+  取消计时器clearTimeout()
+
+  setTimeout()和clearTimeout()一起使用，停止计时器。
+
+  语法：clearTimeout(id_of_setTimeout)
+  参数说明:
+     id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
