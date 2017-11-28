@@ -5,4 +5,10 @@ DOCTYPE 声明不是 HTML 标签；它是指示 web 浏览器关于页面使用�
 在 HTML 4.01 中，DOCTYPE声明引用 DTD，因为 HTML 4.01 基于 SGML。DTD 规定了标记语言的规则，这样浏览器才能正确地呈现内容。
 HTML5 不基于 SGML，所以不需要引用 DTD。
 
+Strict 
+ 该 DTD 包含所有 HTML 元素和属性，但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+Transitional
+ 该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。
+Frameset
+ 该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。允许框架集（Framesets）。
 2、
