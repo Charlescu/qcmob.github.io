@@ -17,6 +17,138 @@ objectName.methodName()
 
 
 
+Array数组对象
+
+数组对象是一个对象的合集，里边的对象可以是不同类型的。数组的每一个成员对象都有一个“下标”，用来表示它在数组中的位置，是从零开始的。
+
+<!--  数组定义方式  -->
+数组创建方式有多种：
+（1）
+var myarr = new Array(66,80,90);  //创建数组同时赋值；
+（2）
+var myarr = [66,80,90];          //直接输入一个数组（称“字面量数组”）
+（3）
+var myarr = new Array(30);       //创建一个数组只给一个长度，并不给值；
+
+注意：数组存储的数据可以是任何类型（数值、字符、布尔值等）；
+      在javaScript中，向数组继续添加新元素时只需使用下一个未用的索引，任何时候都可以不断向数组添加新元素；
+
+      var nyarr = new Array();
+      myarr[0] = 11;
+      myarr[1] = 12;
+      若想继续添加元素，只需使用下一个未用的索引
+      myarr[2] = 13;
+
+   在未规定数组长度时，根据索引添加新元素。规定长度时也可以添加元素如果原来数组长度为3，此时满了依然可以添加；
+      
+      javaScript数组属性length；
+
+      myarray.length; //获得数组myarray的长度
+
+      注意：数组索引从0开始而且JavaScript数组的length属性是可变的，这一点需要特别注意。数组随元素的增加，长度也会改变；
+
+      二维数组
+      myarr[][]
+
+      (1)二维数组定义方法
+
+       var myarr = new Array(); //申明一维数组
+       for(var i=0;i<2;i++){      //一维数组长度为2
+          myarr[i] = new Array(); //再声明二维数组
+       for(var j=0;j<3;j++){      //二维数组长度为3
+          myarr[i][j] = i*j;    //为每个数组元素赋值
+          }
+       }
+
+      (2)二维数组定义方法
+       var myarr = [[0,1,2],[1,2,3]]
+        myarr[0][1] = 5;       //将5的值传入到数组中
+
+Array对象属性：
+constructor   返回对创建此对象的数组函数的引用
+length        设置或返回数组中元素的数目
+prototype     向对象添加属性或者方法
+
+Array对象方法：
+
+concat();  
+         连接两个或更多的数组，并返回结果。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本
+
+  返回值：返回一个新的数组，该数组是通过把所有 arrayX 参数添加到 arrayObject 中生成的。如果要进行 concat() 操作的参数是数组，那么添加的是数组中的元素，而不是数组。
+
+slice();
+1.返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
+2. 该方法并不会修改数组，而是返回一个子数组。
+注意：
+1. 可使用负值从数组的尾部选取元素。
+2.如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。(start,)(start)两种方式都可以
+3. String.slice() 与 Array.slice() 相似。
+
+sort();
+1.如果不指定<方法函数>，则按unicode码顺序排列。
+2.如果指定<方法函数>，则按照<方法函数>所指定的排序方法排序。
+myArray.sort(sortMethod);
+注意：
+该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数a和b，其返回值如下：
+若返回值<=-1,则表示A在排序后的序列中出现在B之前。
+若返回值>-1&&<1,则表示A和B具有相同的排序顺序。
+若返回值>=1,则表示A在排序后的序列中出现在B之前。
+   
+   若要比较数组内的数值大小进行排序的时候，就要定义函数进行了
+   例：
+      <script type="text/javascript">
+        function sortNum(a,b){
+        return a - b;
+        //升序排序，降序排序时返回 b - a；
+        }
+        var myarr = new Array("20","15","56");
+        document.write(myarr.sort(sortNum));
+      </script>
+
+
+
+
+
+
+Boolean对象
+
+Boolean对象属性：
+constructor   返回对创建此对象的Boolean函数的引用
+prototype     向对象添加方法和属性
+
+Boolean对象方法：
+
+toSource()  返回该对象的源代码； //在IE中无效  
+
+toString()  把逻辑值转换为字符串并返回；
+   返回值：
+   根据原始布尔值或者booleanObject对象的值返回字符串"true"或"false"
+   抛出:
+   如果调用该方法的对象不是Boolean，则抛出异常TypeError
+   注释：
+   在Boolean对象被用于字符串环境中时，此方法会被自动调用。
+
+    var boo = new Boolean(true)
+    document.write(boo.value())
+
+    输出字符串true
+
+
+valueOf()   返回Boolean对象的原始值;
+   返回值：
+   booleanObject 的原始布尔值。
+   抛出：
+   如果调用该方法的对象不是 Boolean，则抛出异常 TypeError。
+
+  var boo = new Boolean(true)
+  document.write(boo.value())
+
+  输出布尔值true
+
+
+
+
+
 Date对象
 日期对象可以存储任意一个日期，并且可以精确到毫秒数（1/1000）。
 
@@ -41,26 +173,6 @@ get/setTime()          返回 设置时间（毫秒为单位）
     getDay()   返回星期，返回的是0-6的数字，0表示星期天，6表示星期一；
 
    get/setTime()   返回/设置时间，单位毫秒数。计算从1970年1月1日零时到日期对象所指的日期的毫秒数。
-
-
-
-
-
-
-String字符串对象
-定义字符串的方法就是直接赋值，例如：
-var mystr = "这是一个字符串";
-
-访问字符串对象的属性length：  //以及constructor和prototype属性
-StringObject.length;  //返回该字符串的长度。
-
-访问字符串对象的方法：
-StringObject.fangfa();
-   
-String对象的方法：
-   anchor()   创建HTML锚
-
-
 
 
 
@@ -115,86 +227,140 @@ math对象，提供对数据的数据计算。
 
 
 
+Number对象
+
+Number对象是原始数值的包装对象。
+创建Number对象的语法：
+var num = new Number(value);
+var num1 = Number(value);
+
+参数
+参数value是要创建的Number对象的数值，或是要转换成数字的值。
+
+返回值
+当Number()和运算符new一起作为构造函数使用时，它返回一个新创建的Number对象。如果不用new运算符，把Number()
+作为一个函数来调用，它将把自己的参数转换成一个原始的数值，并且返回这个值(如果转换失败，则返回NaN)。
+
+Number对象属性
+constructor      返回对创建此对象的Number函数的引用。
+MAX_VALUE        可表示的最大的数。
+MIN_VALUE        可表示的最小的数。
+NaN              非数字值
+NEGATIVE_INFINITY   负无穷大，溢出时返回该值。  溢出返回值 -Infinity
+POSITIVE_INFINITY   正无穷大，溢出时返回该值。  溢出返回值 Infinity
+prototype         向对象添加属性和方法。
+
+Number对象方法：
+toString(radix)       把数字转换为字符串，使用指定的基数。radix可选参数，规定表示数字的技术，使用2~36之间的整数，默认为10，如果是其他值，ECMAScript标准允许实现返回任意值.
+toLocaleString()      把数字转换为字符串，使用本地数字格式顺序。
+toFixed(num)          把数字转换为字符串，结果的小数点后有指定位数的数字。 num参数必需，规定小数的位数，0~20之间的值，包括0和20，省略不写将用0代替。
+toExponential()	     把对象的值转换为指数计数法。
+toPrecision()	     把数字格式化为指定的长度。
+valueOf()            	返回一个 Number 对象的基本数字值。
 
 
 
-Array数组对象
-数组对象是一个对象的合集，里边的对象可以是不同类型的。数组的每一个成员对象都有一个“下标”，用来表示它在数组中的位置，是从零开始的。
 
-<!--  数组定义方式  -->
-数组创建方式有多种：
-（1）
-var myarr = new Array(66,80,90);  //创建数组同时赋值；
-（2）
-var myarr = [66,80,90];          //直接输入一个数组（称“字面量数组”）
-（3）
-var myarr = new Array(30);       //创建一个数组只给一个长度，并不给值；
 
-注意：数组存储的数据可以是任何类型（数值、字符、布尔值等）；
-      在javaScript中，向数组继续添加新元素时只需使用下一个未用的索引，任何时候都可以不断向数组添加新元素；
+String字符串对象
+定义字符串的方法就是直接赋值，例如：
+var mystr = "这是一个字符串";
 
-      var nyarr = new Array();
-      myarr[0] = 11;
-      myarr[1] = 12;
-      若想继续添加元素，只需使用下一个未用的索引
-      myarr[2] = 13;
+访问字符串对象的属性length：  //以及constructor和prototype属性
+StringObject.length;  //返回该字符串的长度。
 
-   在未规定数组长度时，根据索引添加新元素。规定长度时也可以添加元素如果原来数组长度为3，此时满了依然可以添加；
-      
-      javaScript数组属性length；
-
-      myarray.length; //获得数组myarray的长度
-
-      注意：数组索引从0开始而且JavaScript数组的length属性是可变的，这一点需要特别注意。数组随元素的增加，长度也会改变；
-
-      二维数组
-      myarr[][]
-
-      (1)二维数组定义方法
-
-       var myarr = new Array(); //申明一维数组
-       for(var i=0;i<2;i++){      //一维数组长度为2
-          myarr[i] = new Array(); //再声明二维数组
-       for(var j=0;j<3;j++){      //二维数组长度为3
-          myarr[i][j] = i*j;    //为每个数组元素赋值
-          }
-       }
-
-      (2)二维数组定义方法
-       var myarr = [[0,1,2],[1,2,3]]
-        myarr[0][1] = 5;       //将5的值传入到数组中
-
-Array对象属性：
-constructor   返回对创建此对象的数组函数的引用
-length        设置或返回数组中元素的数目
-prototype     向对象添加属性或者方法
-
-Array对象方法：
-
-slice();
-1.返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
-2. 该方法并不会修改数组，而是返回一个子数组。
-注意：
-1. 可使用负值从数组的尾部选取元素。
-2.如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。(start,)(start)两种方式都可以
-3. String.slice() 与 Array.slice() 相似。
-sort();
-1.如果不指定<方法函数>，则按unicode码顺序排列。
-2.如果指定<方法函数>，则按照<方法函数>所指定的排序方法排序。
-myArray.sort(sortMethod);
-注意：
-该函数要比较两个值，然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数a和b，其返回值如下：
-若返回值<=-1,则表示A在排序后的序列中出现在B之前。
-若返回值>-1&&<1,则表示A和B具有相同的排序顺序。
-若返回值>=1,则表示A在排序后的序列中出现在B之前。
+访问字符串对象的方法：
+StringObject.fangfa();
    
-   若要比较数组内的数值大小进行排序的时候，就要定义函数进行了
-   例：
-      <script type="text/javascript">
-        function sortNum(a,b){
-        return a - b;
-        //升序排序，降序排序时返回 b - a；
-        }
-        var myarr = new Array("20","15","56");
-        document.write(myarr.sort(sortNum));
-      </script>
+String对象的方法：
+   anchor()   创建HTML锚
+   concat()   连接字符串
+   charAt()   返回在指定位置的字符
+   indexof()  检索字符串
+
+   split(separator,howmany)    把字符串分割为字符串数组
+       separator   必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。
+       howmany可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度
+
+   slice(start,end)    提取从start到end字符串的片段，并在新的字符串中返回被提取的部分。
+       start	要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。
+       end	紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。
+
+   substring(startPos,stopPos)   用于提取字符串中介于两个指定下标之间的字符，提取从start到end-1字符串的片段
+   substr(startPos,length)       用于从字符串中提取从 startPos位置开始的指定数目的字符串。
+      注意：如果参数startPos是负数，从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。
+
+      如果startPos为负数且绝对值大于字符串长度，startPos为0。
+
+
+
+
+RegExp对象
+RegExp对象表示正则表达式，它是对字符串执行模式匹配的强大工具。
+
+直接量语法
+/pattern/attributes
+
+创建RegExp对象的语法：
+new RegExp(pattern,attributes);
+
+参数
+参数 pattern 是一个字符串，指定了正则表达式的模式或其他正则表达式。
+参数 attributes 是一个可选的字符串，包含属性 "g"、"i" 和 "m"，分别用于指定全局匹配、区分大小写的匹配和多行匹配。ECMAScript 标准化之前，不支持 m 属性。如果 pattern 是正则表达式，而不是字符串，则必须省略该参数。
+
+返回值
+一个新的 RegExp 对象，具有指定的模式和标志。如果参数 pattern 是正则表达式而不是字符串，那么 RegExp() 构造函数将用与指定的 RegExp 相同的模式和标志创建一个新的 RegExp 对象。
+如果不用 new 运算符，而将 RegExp() 作为函数调用，那么它的行为与用 new 运算符调用时一样，只是当 pattern 是正则表达式时，它只返回 pattern，而不再创建一个新的 RegExp 对象。
+
+抛出
+SyntaxError - 如果 pattern 不是合法的正则表达式，或 attributes 含有 "g"、"i" 和 "m" 之外的字符，抛出该异常。
+TypeError - 如果 pattern 是 RegExp 对象，但没有省略 attributes 参数，抛出该异常。
+
+[abc]	查找方括号之间的任何字符。
+[^abc]	查找任何不在方括号之间的字符。
+[0-9]	查找任何从 0 至 9 的数字。
+[a-z]	查找任何从小写 a 到小写 z 的字符。
+[A-Z]	查找任何从大写 A 到大写 Z 的字符。
+[A-z]	查找任何从大写 A 到小写 z 的字符。
+[adgk]	查找给定集合内的任何字符。
+[^adgk]	查找给定集合外的任何字符。
+(red|blue|green)	查找任何指定的选项。
+
+RegExp 对象属性
+global	     RegExp对象是否具有标志g。	
+ignoreCase	 RegExp对象是否具有标志i。	
+lastIndex	 一个整数，标示开始下一次匹配的字符位置。	
+multiline	 RegExp对象是否具有标志m。	
+source	     正则表达式的源文本。
+
+RegExp对象方法
+compile	  编译正则表达式。	
+exec	  检索字符串中指定的值。返回找到的值，并确定其位置。	
+test	  检索字符串中指定的值。返回 true 或 false。
+
+支持正则表达式的 String 对象的方法
+search	  检索与正则表达式相匹配的值。	
+match	  找到一个或多个正则表达式的匹配。	
+replace	  替换与正则表达式匹配的子串。	
+split	  把字符串分割为字符串数组。
+
+
+
+
+
+
+Function
+全局对象描述
+全局对象是预定义的对象，作为 JavaScript 的全局函数和全局属性的占位符。通过使用全局对象，可以访问所有其他所有预定义的对象、函数和属性。全局对象不是任何对象的属性，所以它没有名称。
+在顶层 JavaScript 代码中，可以用关键字 this 引用全局对象。但通常不必用这种方式引用全局对象，因为全局对象是作用域链的头，这意味着所有非限定性的变量和函数名都会作为该对象的属性来查询。例如，当JavaScript 代码引用 parseInt() 函数时，它引用的是全局对象的 parseInt 属性。全局对象是作用域链的头，还意味着在顶层 JavaScript 代码中声明的所有变量都将成为全局对象的属性。
+全局对象只是一个对象，而不是类。既没有构造函数，也无法实例化一个新的全局对象。
+在 JavaScript 代码嵌入一个特殊环境中时，全局对象通常具有环境特定的属性。实际上，ECMAScript 标准没有规定全局对象的类型，JavaScript 的实现或嵌入的 JavaScript 都可以把任意类型的对象作为全局对象，只要该对象定义了这里列出的基本属性和函数。例如，在允许通过 LiveConnect 或相关的技术来脚本化 Java 的 JavaScript 实现中，全局对象被赋予了这里列出的 java 和 Package 属性以及 getClass() 方法。而在客户端 JavaScript 中，全局对象就是 Window 对象，表示允许 JavaScript 代码的 Web 浏览器窗口。
+
+http://www.w3school.com.cn/jsref/jsref_obj_global.asp
+
+
+
+
+Events
+事件句柄
+
