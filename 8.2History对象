@@ -1,0 +1,25 @@
+History对象
+
+history对象记录了用户曾经浏览过的页面(URL)，并可以实现浏览器前进与后退相似导航的功能
+
+注意：从窗口被打开的那一刻开始记录，每个浏览器窗口，每个标签页乃至每个框架，都有自己的history对象与特定的window对象关联。
+语法：
+window。history.[属性|方法]
+
+history对象属性
+length  返回浏览器历史列表中的URL数量  IE 6 和 Opera 9 以 0 开始，而 Firefox 1.5 以 1 开始。
+
+history对象方法
+back()      加载history列表中的前一个URL
+   back() 方法可加载历史列表中的前一个 URL（如果存在）。调用该方法的效果等价于点击后退按钮或调用 history.go(-1)。
+
+forward()   加载history列表中的下一个URL
+   forward() 方法可加载历史列表中的下一个 URL。调用该方法的效果等价于点击前进按钮或调用 history.go(1)。
+
+go()        加载history列表中的某个具体页面
+    定义和用法
+     go() 方法可加载历史列表中的某个具体的页面。
+    语法
+     history.go(number|URL)
+    说明
+     URL 参数使用的是要访问的 URL，或 URL 的子串。而 number 参数使用的是要访问的 URL 在 History 的 URL 列表中的相对位置。
