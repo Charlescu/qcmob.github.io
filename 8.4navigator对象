@@ -1,0 +1,10 @@
+navigator对象
+navigator对象包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本
+
+navigator对象属性
+
+appCodeName   浏览器代码名的字符串表示
+appName       返回浏览器的名称
+appVersion    返回浏览器的平台和版本信息
+platform      返回运行浏览器的操作系统平台
+userAgent     返回由客户端发送服务器的useragent头部的值

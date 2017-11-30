@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>计时器</title>
+</head>
+<body  style="background-color:green">
+
+<h4>操作成功</h4>
+   <!--  <p><span id="time">5</span>秒后回到主页<a href="javascript:history.back()">返回</a></p>
+    <script type="text/javascript">
+        var num = document.getElementById("time").innerHTML;
+        var i = setInterval("if(num > 1){document.getElementById('time').innerHTML = --num;}else{location.assign('http://www.imooc.com');}", 1000);
+    </script> -->
+    
+    <p><span id="sec">5</span>秒回到主页<a href="javascript:window.history.back()">返回</a></p>
+    <script type="text/javascript">
+    	var num = document.getElementById("sec");
+    	console.log(num);
+    	function count(){
+    	
+    		document.getElementById("sec").innerHTML = --num;
+    		if (num == 0) {
+    			// window.open("http://www.imooc.com","_self");
+    			location.assign("http://www.imooc.com");
+    		}
+    	}
+    	setInterval(count,1000);
+    </script>
+
+</body>
+
+</html>

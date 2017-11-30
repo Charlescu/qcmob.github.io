@@ -1,0 +1,23 @@
+location对象
+location对象可以用于获取或者设置窗体的URL，并且可以用于解析URL。
+
+
+语法：
+location.[属性|方法]
+
+
+location对象属性
+protocol  设置或返回当前URL的协议
+hash      设置或返回从井号（#）开始的URL
+host      设置或返回主机名和当前URL端口号
+hostname  设置或返回当前URL的主机名
+href      设置或返回完整的URL
+pathname  设置或返回当前URL的路径部分
+port      设置或返回当前URL的端口号
+search    设置或者返回从问号（？）开始的URL（查询部分）
+
+
+location对象方法
+assign()   加载新的文档
+reload()   重新加载当前文档
+replace()  用新的文档替换当前文档

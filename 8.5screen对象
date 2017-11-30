@@ -1,0 +1,12 @@
+screen对象
+
+screen对象用于获取用户的屏幕信息
+
+语法：
+window.screen.属性
+
+screen对象属性
+availWidth       可用的屏幕宽度
+availHeight      可用的屏幕高度
+height           返回屏幕分辨率的高
+weight           返回屏幕分辨率的宽
