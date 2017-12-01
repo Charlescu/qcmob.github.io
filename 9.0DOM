@@ -1,0 +1,60 @@
+DOM
+
+文档对象模型DOM（Document Object Model）定义访问和处理HTML文档的标准方法。DOM将HTML文档呈现为带有元素、属性和文本的树结构（节点树）。
+
+节点分为元素节点、文本节点、属性节点
+1、元素节点：<html> <body> <p>等都是元素节点，即标签。
+2、文本节点：向用户展示的内容，标签中的JavaScript、DOM、CSS等文本。
+3、属性节点：标签的属性，<a>标签的href连接属性。
+
+节点属性：
+nodeName:   返回一个字符串，其内容是给定节点的名字。
+nodeType:   返回一个整数，这个数值代表给定节点的类型。
+nodeValue:  返回给定节点的当前值。
+
+
+节点方法
+childNodes  返回一个数组，这个数组由给定元素节点的子节点构成
+firstChild  返回第一个子节点。
+lastChild   返回最后一个子节点。
+perentNode  返回一个给定节点的父节点。
+nextSibling 返回给定节点的下一个子节点。
+previousSibling  返回给定节点的上一个子节点。
+
+DOM操作
+createElement(element)    创建一个新的元素节点
+createTextNode()          创建一个包含着给定文本的新文本节点。
+appendChild()             指定节点的最后一个子节点列表之后添加一个新的子节点
+insertBefore()            将一个给定节点插入到一个给定元素节点的给定子节点的前面
+removeChild()             从一个给定元素中删除一个字节点
+replaceChild()            把一个给定父元素里的一个子节点替换为另外一个节点
+
+注释：前两个是document方法
+
+
+getElementById()方法
+getElementsByName()方法
+语法：
+document.getElementsByName(name)  
+
+与getElementById()方法不同的是，通过元素的name属性查询元素，而不是通过id属性。
+
+1. 因为文档中的 name 属性可能不唯一，所有 getElementsByName() 方法返回的是元素的数组，而不是一个元素。
+2. 和数组类似也有length属性，可以和访问数组一样的方法来访问，从0开始。
+例子：
+function getnum(){
+  var mynode= document.getElementsByName("myt");  
+  alert(mynode.length);
+}
+
+
+
+getElementsByTagName()方法
+  返回带有指定标签名的节点对象的集合。返回元素的顺序是它们在文档中的顺序。
+
+  语法：
+  document.getElementsByTagName(Tagname)
+
+  说明：
+  1.Tagname是标签的名称，如p、a、img等标签。
+  2.和数组类似也有length属性，可以和访问数组一样的方法来访问，所以从0开始。
