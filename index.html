@@ -173,5 +173,30 @@ function createa(url,text)
 
 </script> 
 <button onclick="b()">替换节点</button>
+
+
+
+
+<br/><br/><br/>例子8：获取宽高<br/>
+
+<script type="text/javascript">
+  var h1 = document.documentElement.innerHeight || document.body.height;
+  var w1 = document.documentElement.innerHidth || document.body.width;
+  document.write("网页的宽高是："+"<br/>"+"高："+h1+"<br/>"+"宽："+w1+"<br/>");
+
+  var w= document.documentElement.clientWidth || document.body.clientWidth;
+  var h= document.documentElement.clientHeight || document.body.clientHeight;
+  document.write("浏览器可视区域的宽高是："+"<br/>"+"高："+h+"<br/>"+"宽："+w+"<br/>");
+
+  var w3=document.documentElement.scrollWidth  || document.body.scrollWidth;
+  var h3=document.documentElement.scrollHeight  || document.body.scrollHeight;
+  document.write("网页的内容宽高是："+"<br/>"+"高："+h3+"<br/>"+"宽："+w3+"<br/>");
+
+  var w2= document.documentElement.offsetWidth || document.body.offsetWidth;
+  var h2= document.documentElement.offsetHeight|| document.body.offsetHeight;
+  document.write("网页的内容宽高是（包括滚动条等边线）："+"<br/>"+"高："+h2+"<br/>"+"宽："+w2+"<br/>");
+</script>
+
+
  </body>
 </html>
