@@ -3,12 +3,9 @@ function functionName(arg1, arg2, …){
 
 }
 函数表达式：使用function关键字声明一个函数，但未给函数命名，最后将匿名函数赋予一个变量，叫函数表达式，这是最常见的函数表达式语法形式。 
-var variable=function(arg1, arg2, …){ 
+var variable=function(arg1, arg2, …){ } 或 
+var variable=function functionName(arg1, arg2, …){ }可用来递归 
 
-} 或 
-var variable=function functionName(arg1, arg2, …){ 
-
-}可用来递归 
 javascript 
 var variable=function functionName(x){ 
 if(x<=1) 
@@ -17,5 +14,5 @@ else
 return x*functionName(x); 
 } 
 匿名函数：function () {}; 使用function关键字声明一个函数，但未给函数命名，所以叫匿名函数，匿名函数属于函数表达式，匿名函数有很多作用，赋予一个变量则创建函数，赋予一个事件则成为事件处理程序或创建闭包等等。 
-注意: 函数表达式后面直接加()可变为立即执行函数，形如“函数表达式()”；而函数声明要多加一个{}，形如(函数声明){}
+注意: 函数表达式后面直接加()可变为立即执行函数，形如“函数表达式()”；而函数声明要多加一个{}，形如 函数声明(){}
 
