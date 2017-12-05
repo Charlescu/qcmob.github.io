@@ -5,43 +5,20 @@
     <title>实践题 - 选项卡</title>
     <style type="text/css">
      /* CSS样式制作 */ 
-    #ul{
-        margin:0px;
-        padding:0px;
-        width:300px;
-        height:30px;
-        border-bottom: 2px solid red;
-        list-style-type:none;
-    }
-    #ul li{
-        width:60px;
-        float:left;
-        margin-left:4px;
-        border :1px solid black;
-        border-bottom: 0px;
-        text-align: center;
-        height:30px;
-        cursor: pointer;
-    }
-    #ul li:hover{
-        border :2px solid red;
-       border-bottom: 2px solid white; 
-    }
-    .active{
-        background: #fff;
-    }
-    #ul li span{
-        margin:0 5px;
-    }
-    #tab-list div{
-        margin-top:1px; 
-        width:299px;
-        height:150px;
-        border:1px solid blue;
-        border-top: 0px;
-    }
-    .show{display:block;}
-    .hide{display:none;}
+    *{margin:0px;padding:0px;}
+    ul{list-style-type:none;}
+    a{text-decoration:none;}
+   #tab-list{width: 300px;height:190px;margin: 20px auto;}
+
+     #ul{border-bottom: 2px solid red;height: 32px;}
+     #ul li{display: inline-block;width: 60px;line-height: 30px;text-align: center;border: 1px solid #999;border-bottom: none;margin-left: 5px;}
+     #ul li:hover{cursor: pointer;}
+     #ul li.active{border-top:2px solid red;border-bottom:2px solid #FFFFFF;}
+
+     #tab-list div{border: 1px solid #7396B8;border-top: none;}
+     
+     
+     .show{display: block;}.hide{display: none;}
     </style>
     <script type="text/javascript">
          
