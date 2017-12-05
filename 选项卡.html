@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实践题 - 选项卡</title>
+    <style type="text/css">
+     /* CSS样式制作 */ 
+    #ul{
+        margin:0px;
+        padding:0px;
+        width:300px;
+        height:30px;
+        border-bottom: 2px solid red;
+        list-style-type:none;
+    }
+    #ul li{
+        width:60px;
+        float:left;
+        margin-left:4px;
+        border :1px solid black;
+        border-bottom: 0px;
+        text-align: center;
+        height:30px;
+        cursor: pointer;
+    }
+    #ul li:hover{
+        border :2px solid red;
+       border-bottom: 2px solid white; 
+    }
+    .active{
+        background: #fff;
+    }
+    #ul li span{
+        margin:0 5px;
+    }
+    #tab-list div{
+        margin-top:1px; 
+        width:299px;
+        height:150px;
+        border:1px solid blue;
+        border-top: 0px;
+    }
+    .show{display:block;}
+    .hide{display:none;}
+    </style>
+    <script type="text/javascript">
+         
+   window.onload = function(){
+   var getUl = document.getElementById("ul");
+   var getLi = getUl.getElementsByTagName("li");
+   var getDiv = document.getElementById("tab-list");
+   var getChDiv = getDiv.getElementsByTagName("div");
+
+  //对头部进行循环
+  for (var i = 0; i <getLi.length; i++) {
+    //为每个导航添加一个索引
+     getLi[i].index = i;
+     //为每个导航元素添加鼠标经过事件
+     getLi[i].onmouseover = function(){
+        //循环所有导航，并且清空激活样式
+        for (var i = 0; i <getLi.length; i++) {
+            getLi[i].className = "";
+        }
+        //给鼠标所在的导航添加激活样式
+        this.className = "active";
+        //循环所有内容区域，并且清空样式
+        for(var i=0;i<getChDiv.length;i++){
+            getChDiv[i].className = "hide";
+        }
+        getChDiv[this.index].className = "show";
+     }
+  }
+}
+    
+    </script>
+</head>
+<body>
+<!-- HTML页面布局 -->
+<div id="tab-list">
+<ul id="ul">
+ <li class="active"><span>房产</span></li>    
+ <li ><span>家居</span></li>  
+ <li ><span>二手房</span></li>  
+</ul>
+<div class="show">
+    275万购昌平邻铁三居 总价20万买一居<br/>
+    200万内购五环三居 140万安家东三环<br/>
+    北京首现零首付楼盘 53万购东5环50平<br/>
+    京楼盘直降5000 中信府 公园楼王现房<br/>
+</div>
+<div class="hide">
+    40平出租屋大改造 美少女的混搭小窝<br/>
+     经典清新简欧爱家 90平老房焕发新生<br/>
+     新中式的酷色温情 66平撞色活泼家居<br/>
+     瓷砖就像选好老婆 卫生间烟道的设计<br/>
+</div>
+<div class="hide">
+    通州豪华3居260万 二环稀缺2居250w甩<br/>
+     西3环通透2居290万 130万2居限量抢购<br/>
+     黄城根小学学区仅260万 121平70万抛!<br/>
+     独家别墅280万 苏州桥2居优惠价248万<br/>
+</div>
+</div>
+</body>
+</html>
