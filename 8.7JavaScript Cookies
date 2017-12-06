@@ -1,0 +1,9 @@
+JavaScript Cookies
+
+cookie用来识别用户
+
+什么是cookie？
+cookie是存储在访问者计算机中的变量，每当同一台通过浏览器请求某个页面时，就会发送这个cookie。可以使用Javascript来创建和取回cookie的值。
+
+名字cookie
+  当访问者首次访问页面时，访问者或许会填写他们的名字，名字会存储于cookie中。当访问者再次访问网站时，可能会收到一些欢迎词，名字就是从cookie中取回的。
