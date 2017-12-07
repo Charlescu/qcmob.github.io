@@ -5,3 +5,16 @@ Javascript类型转换
   null == undefined
 
   ===  严格等于，相等的条件是数值相等，类型相等
+  null===null
+  undefined===undefined
+  NaN!=NaN
+  new Object() != new Object()     比较时，用的是引用去做比较，而不是用值去比较
+
+  类型相同，同===
+
+  类型不同，尝试类型转换和比较：
+  null == undefined undefined == null  相等
+  number == string string转number 1 == "1.0"  //true  等号一边是数字，一边是字符串，尝试String转number
+  boolean == ?转number  1 == true // true   等号一边是Boolean会将Boolean转为数字，以此类推
+  object == number|string 尝试对象转为基本类型   new String('hi') == 'hi' //true
+  其他：false
