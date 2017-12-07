@@ -1,0 +1,50 @@
+Javascript包装对象
+
+基本类型中，有三个比较特殊的存在就是：String Number Boolean，这三个基本类型都有自己对应的包装对象。并且随时等候召唤。包装对象呢，其实就是对象，有相应的属性和方法。
+
+
+还一点需要注意的是，原始对象和包装对象不严格相等：
+
+var s = "Test", S=new String("Test");
+console.log(s == S);//true
+console.log(s === S);//false
+
+//s的对象最终被销毁，S存在于内存中
+
+由此我们可以知道，引用类型和基本包装对象的区别在于：生存期
+引用类型所创建的对象，在执行的期间一直在内存中，而基本包装对象只是存在了一瞬间。
+所以我们无法直接给基本类型添加方法：
+
+var str = 'hello';
+str.number = 10; //假设我们想给字符串添加一个属性number ，后台会有如下步骤
+/*
+｛ 
+   var str = new String('hello');     // 1 找到对应的包装对象类型，然后通过包装对象创建出一个和基本类型值相同的对象
+    str.number = 10;                  // 2 通过这个对象调用包装对象下的方法 但结果并没有被任何东西保存
+    str =null;                         // 3 这个对象又被销毁
+ ｝
+ */
+alert(str.number); //undefined  当执行到这一句的时候，因为基本类型本来没有属性，后台又会重新重复上面的步骤
+  /*
+｛ 
+   var str = new String('hello');   // 1 找到基本包装对象，然后又新开辟一个内存，创建一个值为hello对象
+     str.number = undefined         // 2 因为包装对象下面没有number这个属性，所以又会重新添加，因为没有值，所以值是未定 ;然后弹出结果
+     str =null;                     // 3 这个对象又被销毁
+ ｝
+ */
+
+ 基本包装对象的原型下面添加属性和方法，每个对象都有原型。
+
+    //给字符串添加方法  要写到对应的包装对象的原型下才行
+  var str = 'hello';
+   String.prototype.last= fuction(){ 
+    return this.charAt(this.length);
+       }; 
+   str.last(); // 5 执行到这一句，后台依然会偷偷的干这些事
+   /*
+｛ 
+    var str = new String('hello');// 找到基本包装对象，new一个和字符串值相同的对象，
+    str.last();  // 通过这个对象找到了包装对象下的方法并调用 
+    str =null; //  这个对象被销毁
+｝
+   */
