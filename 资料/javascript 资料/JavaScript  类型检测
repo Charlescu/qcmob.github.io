@@ -16,3 +16,5 @@ typeof new Object() 返回"object"
 typeof [1,2]     返回"object"
 typeof NaN       返回"number"
 typeof null      返回"object"
+
+ instanceof  基于原型链的判断方式
