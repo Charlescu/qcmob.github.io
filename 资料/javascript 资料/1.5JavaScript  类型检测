@@ -19,3 +19,29 @@ typeof null      返回"object"   硬性规定
 
 判断对象类型的时候，经常用instanceof  
  instanceof  基于原型链的判断方式
+ instanceof 左操作对象为对象否则为true（如果是基本类型返回false），右操作对象为函数对象或者函数构造器。（如果不是则抛出type Error异常）
+ instanceof原理：
+   会判断左操作数的对象的原型链上是否有右操作数构造函数的prototype属性
+
+   [1,2] instanceof Array  ===true
+   new Object()  instanceof Array  ===false 空对象返回false
+
+
+Object.prototype.toString
+
+Object.prototype.toString.apply([]);             ==="[object Array]";
+Object.prototype.toString.apply(function(){});   ==="[object Function]";
+Object.prototype.toString.apply(null);           ==="[object Null]"   在IE6/7/8中返回哦"[object Object]"
+Object.prototype.toString.apply(undefined);      ==="[object Undefined]"
+
+
+constructor 
+  任何对象都有constructor属性，实际上继承自原型。constructor指向构造对象的构造器或构造函数 ，constructor可被改写，使用时注意
+
+duck type
+测试某个对象有没有一些方法或者属性来进行判断。
+
+
+typeof适合基本类型及function检测，遇到null失效，用严格等于来检测null
+[[Class]]通过{}.toString拿到，适合内置对象和基元类型，遇到null和undefined失效
+instanceof 适合自定义对象，也可以用来检测原生对象，在不同iframe和window间检测时效

@@ -1,0 +1,124 @@
+7.n Javascript面向对象
+
+对象
+对象是:"属性的无序集合，每个属性存放一个原始值、对象或函数".严格来说，这意味着对象是无特定顺序的值的数组。
+
+类
+每个对象都由类定义，可以把类看作对象的配方。类不仅要定义对象的接口(interface)(开发者访问的属性和方法)，还要定义对象的内部工作（
+使属性和方法发挥作用的代码）。编译器和解释程序都根据类的说明构建对象。
+
+实例
+程序使用类创建对象时，生成的对象叫做类的实例（instance）。对类生成的对象的个数的唯一限制来自于运行代码的机器的物理内存。每个实例的行为相同，
+但实例处理一组独立的数据。由类创建对象实例的过程叫做实例化（instantiation）。
+
+面向对象语言的要求
+一种面向对象语言需要向开发者提供四种基本能力：
+1.封装- 把相关的信息(无论数据或方法)存储在对象中的能力
+2.聚集- 把一个对象存储在另一个对象内的能力
+3.继承- 由另一个类(或多个类)得来类的属性和方法的能力
+4.多态- 编写能以多种方法运行的函数或方法的能力
+
+对象的构成
+在ECMAScript中，对象由特性（attribute）构成，特性可以是原始值，也可以是引用值。如果特性存放的是函数，它将被看作对象的方法(method),否则该特性被看作对象的属性(property).
+
+对象的声明和实例化
+对象的创建方式是用关键字new后面跟上实例化的类的名字：
+var oObject = new Object();
+var oStringObject = new String();
+第一行代码创建了 Object 类的一个实例，并把它存储到变量 oObject 中,如果构造函数无参数，括号则不是必需的。
+var oObject = new Object;
+
+对象引用
+在ECMAScript中，不能访问对象的物理表示，只能访问对象的引用。每次创建对象，存储在变量中的都是该对象的引用，而不是对象本身。
+
+对象废除
+ECMAScript 拥有无用存储单元收集程序（garbage collection routine），意味着不必专门销毁对象来释放内存。当再没有对对象的引用时，称该对象被废除（dereference）了。运行无用存储单元收集程序时，所有废除的对象都被销毁。每当函数执行完它的代码，无用存储单元收集程序都会运行，释放所有的局部变量，还有在一些其他不可预知的情况下，无用存储单元收集程序也会运行。
+
+   强制对象废除方法：
+                    var oObject = new Object();
+                        oObject = null;
+    当变量 oObject 设置为 null 后，对第一个创建的对象的引用就不存在了。这意味着下次运行无用存储单元收集程序时，该对象将被销毁。
+
+早绑定和晚绑定
+所谓绑定（binding），即把对象的接口与对象实例结合在一起的方法。
+
+早绑定（early binding）是指在实例化对象之前定义它的属性和方法，这样编译器或解释程序就能够提前转换机器代码。在 Java 和 Visual Basic 这样的语言中，有了早绑定，就可以在开发环境中使用 IntelliSense（即给开发者提供对象中属性和方法列表的功能）。ECMAScript 不是强类型语言，所以不支持早绑定。
+
+另一方面，晚绑定（late binding）指的是编译器或解释程序在运行前，不知道对象的类型。使用晚绑定，无需检查对象的类型，只需检查对象是否支持属性和方法即可。
+ECMAScript 中的所有变量都采用晚绑定方法。这样就允许执行大量的对象操作，而无任何惩罚。
+
+对象类型
+一般来说，可以创建并使用的对象有三种：本地对象、内置对象和宿主对象。
+   本地对象：
+        独立于宿主环境的 ECMAScript 实现提供的对象”。简单来说，本地对象就是 ECMA-262 定义的类（引用类型）。它们包括：
+      Object
+      Function
+      Array
+      String
+      Boolean
+      Number
+      Date
+      RegExp
+      Error
+      EvalError
+      RangeError
+      ReferenceError
+      SyntaxError
+      TypeError
+      URIError
+   内置对象
+      ECMA-262 把内置对象（built-in object）定义为“由 ECMAScript 实现提供的、独立于宿主环境的所有对象，在 ECMAScript 程序开始执行时出现”。这意味着开发者不必明确实例化内置对象，它已被实例化了。ECMA-262 只定义了两个内置对象，即 Global 和 Math （它们也是本地对象，根据定义，每个内置对象都是本地对象）。
+
+   宿主对象
+      所有非本地对象都是宿主对象（host object），即由 ECMAScript 实现的宿主环境(浏览器)提供的对象。所有 BOM（Window、Navigator、Screen、History、Location）和 DOM 
+      （DOM Document、DOM Element、DOM Attribute、DOM Event）对象都是宿主对象。
+
+ECMAScript对象作用域
+  ECMAScript对象只有一种作用域，公有作用域
+  建议性解决方案：obj._color_ = "blue"; 这不能改变属性是公有的事实，只是一个约定来把此属性看作私有的。
+
+ECMAScript 没有静态作用域
+
+
+
+ECMAScript定义类或对象
+
+原始方式
+ var ocar = new Object;
+     ocar.color = "blue";
+     ocar.doors = 4;
+     ocar.mpg = 25;
+     ocar.showcolor = function(){ this.color };
+     ocar.opendoors = function(){ this.doors };
+
+  缺陷：需要创建多个car的实例。
+
+  解决方案：
+工厂方式；
+  创建并返回特定类型的对象的工厂函数(factory function).
+
+  function car(){
+    var oCar = new Object;
+    oCar.color = "blue";
+    oCar.doors = 4;
+    oCar.mpg = 25;
+    oCar.showColor = function(){ this.color };
+    return oCar;  
+  }
+
+var myCar = car();
+var youCar = car();
+
+为函数传递参数
+还可修改car()函数，给它传递各个属性的默认值
+
+var mycar = car("red",4,23);
+var youcar= car("black",4,25);
+  mycar.showColor();   //输出"red"
+  youcar.showColor();  //输出"black"
+给car()函数加上参数，即可为创建的car对象的color属性赋值，使两个对象有相同的属性，却有不同的属性值
+
+在工厂函数外定义对象的方法
+
+
+
