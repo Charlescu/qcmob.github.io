@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="taxt/html;charset=UTF-8">
+</head>
+<body>
+
+<script type="text/javascript">
+//斐波纳挈函数，兔子问题
+//非递归
+function fb(n){
+    var a,b,res;
+    a = b = 1;
+    if(n==1||n==2){
+        return 1;
+    }
+    for(var i=3;i<=n;i++){
+        res = a + b;
+        a = b;
+        b = res;
+    }
+    return res;
+}
+//  alert(fb(2));
+ 
+
+
+ //递归
+  function fib(n){
+    if(n==1||n==2){
+        return 1;
+    }
+    return fib(n-1)+fib(n-2);
+}
+ // alert(fib(10));
+
+  function calculate(){
+  		var n = document.getElementById('input').value;
+  		document.getElementById('result').value = fib(n);
+  }
+</script>
+
+<script type="text/javascript">
+  function ClassA(){};
+  ClassA.prototype.color = "red";
+  ClassA.prototype.showColor = function(){return this.color};
+  function ClassB(){};
+  ClassB.prototype.name = "法拉利";  
+  ClassB.prototype = new ClassA();
+  ClassB.prototype.sayName = function(){ return this.name};
+  var dadCar = new ClassA();
+  var myCar = new ClassB();
+     dadCar.color = "blue";
+     myCar.color = "black";
+     myCar.name = "法拉利";
+
+      alert("我老爸车的颜色是："+dadCar.showColor());
+      alert("我的车的颜色是："+myCar.showColor()+"品牌是："+myCar.sayName());
+
+</script>
+</body>
+</html>

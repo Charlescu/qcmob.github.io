@@ -1,1 +1,52 @@
 3.0继承和原型链
+
+继承机制的实现
+     要用 ECMAScript 实现继承机制，您可以从要继承的基类入手。所有开发者定义的类都可作为基类。出于安全原因，本地类和宿主类不能作为基类，这样可以防止公用访问编译过的浏览器级的代码，因为这些代码可以被用于恶意攻击。
+     选定基类后，就可以创建它的子类了。是否使用基类完全由你决定。有时，你可能想创建一个不能直接使用的基类，它只是用于给子类提供通用的函数。在这种情况下，基类被看作抽象类。
+    尽管 ECMAScript 并没有像其他语言那样严格地定义抽象类，但有时它的确会创建一些不允许使用的类。通常，我们称这种类为抽象类。
+创建的子类将继承超类的所有属性和方法，包括构造函数及方法的实现。记住，所有属性和方法都是公用的，因此子类可直接访问这些方法。子类还可添加超类中没有的新属性和方法，也可以覆盖超类的属性和方法。
+
+
+继承的方式
+对象冒充
+
+call() 方法
+  call() 方法第一个参数用作 this 的对象。其他参数都直接传递给函数自身。
+apply()方法
+  apply() 方法有两个参数，用作 this 的对象和要传递给函数的参数的数组。
+
+原型链(prototype chaining)
+继承这种形式在 ECMAScript 中原本是用于原型链的。上一章介绍了定义类的原型方式。原型链扩展了这种方式，以一种有趣的方式实现继承机制。
+在上一章学过，prototype 对象是个模板，要实例化的对象都以这个模板为基础。总而言之，prototype 对象的任何属性和方法都被传递给那个类的所有实例。原型链利用这种功能来实现继承机制。
+如果用原型方式重定义前面例子中的类，它们将变为下列形式：
+
+function ClassA(){};
+ClassA.prototype.color = "red";
+ClassA.prototype.doors = 4;
+ClassA.prototype.showColor = function(){alert(this.color)};
+function ClassB(){};
+ClassB.prototype = new ClassA();
+
+原型方式的神奇之处在于把 ClassB 的 prototype 属性设置成 ClassA 的实例。
+注意：调用 ClassA 的构造函数，没有给它传递参数。这在原型链中是标准做法。要确保构造函数没有任何参数。
+
+与对象冒充相似，子类新添加的的所有属性和方法都必须出现在 prototype 属性被赋值后，因为在它之前赋值的所有方法都会被删除。为什么？因为 prototype 属性被替换成了新对象，添加了新方法的原始对象将被销毁。
+
+function ClassB() {
+}
+
+ClassB.prototype = new ClassA();
+
+ClassB.prototype.name = "";
+ClassB.prototype.sayName = function () {
+    alert(this.name);
+};
+可通过运行下面的例子测试这段代码：
+var objA = new ClassA();
+var objB = new ClassB();
+objA.color = "blue";
+objB.color = "red";
+objB.name = "John";
+objA.sayColor();
+objB.sayColor();
+objB.sayName();

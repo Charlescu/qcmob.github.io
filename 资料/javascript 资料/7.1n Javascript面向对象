@@ -88,8 +88,8 @@ ECMAScript定义类或对象
      ocar.color = "blue";
      ocar.doors = 4;
      ocar.mpg = 25;
-     ocar.showcolor = function(){ this.color };
-     ocar.opendoors = function(){ this.doors };
+     ocar.showcolor = function(){ alrt(this.color) };
+     ocar.opendoors = function(){ alrt(this.color) };
 
   缺陷：需要创建多个car的实例。
 
@@ -102,7 +102,7 @@ ECMAScript定义类或对象
     oCar.color = "blue";
     oCar.doors = 4;
     oCar.mpg = 25;
-    oCar.showColor = function(){ this.color };
+    oCar.showColor = function(){ alrt(this.color) };
     return oCar;  
   }
 
@@ -119,6 +119,112 @@ var youcar= car("black",4,25);
 给car()函数加上参数，即可为创建的car对象的color属性赋值，使两个对象有相同的属性，却有不同的属性值
 
 在工厂函数外定义对象的方法
+在上面的例子中，每次调用函数car()，都要创建新函数showColor(),意味着每个对象都有自己版本的showColor()版本，而事实上，每个对象都共享同一个函数。可以在工厂函数外定义对象的方法，通过属性指向该方法，从而避免这个问题：
+
+function showColor(){
+	alert(this.color);
+}
+function car(sColor,iDoors,iMpg){
+	var oCar = new Object;
+	oCar.color = sColor;
+	oCar.doors = iDoors;
+	oCar.mpg = iMpg;
+	oCar.showColor = showColor;
+	return oCar;
+}
+
+var myCar = car("red",4,23);
+var youCar = car("black",4,25);
+   myCar.shoeColor();
+   youCar.showColor();
+
+ 在上面这段重写的代码中，在函数 createCar() 之前定义了函数 showColor()。在 createCar() 内部，赋予对象一个指向已经存在的 showColor() 函数的指针。从功能上讲，这样解决了重复创建函数对象的问题；但是从语义上讲，该函数不太像是对象的方法。
 
 
+构造函数式：
+   创建构造函数就像创建工厂函数一样容易。第一步选择类名，即构造函数的名字。根据惯例，这个名字的首字母大写，以使它与首字母通
+   常是小写的变量名分开
+
+ function Car(sColor,iDoors,iMpg){
+       this.color = sColor;
+       this.doors = iDoors;
+       this.mpg = iMpg;
+       this.showColor = function(){
+          alert(this.color);
+     } 
+ }
+ var myCar = Car("red",4,23);
+ var youCar = Car("black",4,25);
+   下面为您解释上面的代码与工厂方式的差别。首先在构造函数内没有创建对象，而是使用 this 关键字。使用 new  运算符构造函数时，在执行第一行代码前先创建一个对象，只有用 this 才能访问该对象。然后可以直接赋予 this 属性，默认情况下是构造函数的返回值（不必明确使用 return 运算符）。
+   现在，用 new 运算符和类名 Car 创建对象，就更像 ECMAScript 中一般对象的创建方式了。
+
+ 原型方式：
+
+ function Car(){}  //空构造函数来设置类名
+ Car.prototype.color = "blue";
+ Car.prototype.doors = 4;
+ Car.prototype.mpg =25;
+ Car.prototype.showClolor = function(){alet(this.color)};
+
+ var myCar = new Car();
+ var youCar = new Car();
+
+ 原型方式真正的问题出现在属性指向的是对象，而不是函数时。
+
+ function Car() {
+}
+
+Car.prototype.color = "blue";
+Car.prototype.doors = 4;
+Car.prototype.mpg = 25;
+Car.prototype.drivers = new Array("Mike","John");
+Car.prototype.showColor = function() {
+  alert(this.color);
+};
+
+var oCar1 = new Car();
+var oCar2 = new Car();
+
+oCar1.drivers.push("Bill");
+
+alert(oCar1.drivers);	//输出 "Mike,John,Bill"
+alert(oCar2.drivers);	//输出 "Mike,John,Bill"
+
+上面的代码中，属性 drivers 是指向 Array 对象的指针，该数组中包含两个名字 "Mike" 和 "John"。由于 drivers 是引用值，Car 的两个实例都指向同一个数组。这意味着给 oCar1.drivers 添加值 "Bill"，在 oCar2.drivers 中也能看到。
+
+
+
+混合的构造函数/原型方式
+    用构造函数定义对象的所有非函数属性，用原型方式定义对象的函数属性(方法)。
+   function Car(sColor,sDoor,sMpg){
+   this.color = sColor;
+   this.doors = sDoor;
+   this.mpg = sMpg;
+   this.drivers = new Array("Mike","John");
+   }
+
+    Car.prototype.showColor = function(){alert(this.color)};
+
+    var myCar = new Car("red",4,23);
+    var youCar = new Car("blue",4,25);
+
+    myCar.drivers.push("bill");
+
+    alert(myCar.drivers);
+    alert(youCar.drivers);
+
+    现在就更像创建一般对象了。所有的非函数属性都在构造函数中创建，意味着又能够用构造函数的参数赋予属性默认值了。因为只创建 showColor() 函数的一个实例，所以没有内存浪费。此外，给 oCar1 的 drivers 数组添加 "Bill" 值，不会影响到 oCar2 的数组，所以输出这些数组的值时，oCar1.drivers 显示的是 "Mike,John,Bill"，而 oCar2.drivers 显示的是 "Mike,John"。因为使用了原型方式，所以仍然能利用 instanceof 运算符来判断对象的类型。
+
+
+动态原型方式
+ 
+   function Car(sColor,sDoor,sMpg){
+      this.color = sColor;  
+      this.doors = sDoor;
+      this.mpg = sMpg;
+      if(Car._initializaed == "undefined"){  //判断对象有没有初始化，如果没有初始化。创建新的方法
+        Car.prototype.showColor = function(){alert(this.color)};
+      };
+      Car._initialized = true;
+   }
 

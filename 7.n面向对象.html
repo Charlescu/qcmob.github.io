@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="taxt/html;charset=UTF-8">
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+//原始方式：
+   var obj = new Object;
+       obj.color = "red";
+       obj.doors = 4;
+       obj.mpg = 23;
+       obj.showColor = function(){return this.color};
+  alert(obj.showColor());
+
+
+//工厂方式：
+functon Car(){
+  var obj = new Object();
+      obj.color = "red";
+      obj.doors = 4;
+      obj.mpg = 25;
+      obj.showColor = function(){return this.color};
+  return obj;
+}
+var mycar = new Car();
+var yocar = new Car();
+   mycar
+
+
+
+
+  
+</script>
+</body>
+</html>
