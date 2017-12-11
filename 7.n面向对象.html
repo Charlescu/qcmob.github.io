@@ -17,18 +17,19 @@
 
 
 //工厂方式：
-functon Car(){
-  var obj = new Object();
-      obj.color = "red";
-      obj.doors = 4;
-      obj.mpg = 25;
-      obj.showColor = function(){return this.color};
-  return obj;
-}
-var mycar = new Car();
-var yocar = new Car();
-   mycar
+function Car(){
+    var obj = new Object;
+    obj.color = "blue";
+    obj.doors = 4;
+    obj.mpg = 25;
+    obj.showColor = function(){ this.color };
+    return obj;  
+  }
 
+var mycar = Car("green",4.23);
+var yocar = Car("black",4,34);
+     alert(mycar.showColor());  
+     alert(yocar.showColor()); 
 
 
 

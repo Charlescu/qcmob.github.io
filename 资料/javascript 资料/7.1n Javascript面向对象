@@ -102,7 +102,7 @@ ECMAScript定义类或对象
     oCar.color = "blue";
     oCar.doors = 4;
     oCar.mpg = 25;
-    oCar.showColor = function(){ alrt(this.color) };
+    oCar.showColor = function(){ alert(this.color) };
     return oCar;  
   }
 
