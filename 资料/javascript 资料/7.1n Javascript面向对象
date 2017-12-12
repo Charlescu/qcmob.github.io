@@ -110,7 +110,16 @@ var myCar = car();
 var youCar = car();
 
 为函数传递参数
-还可修改car()函数，给它传递各个属性的默认值
+还可修改car()函数，给它传递各个属性的参数值
+
+  function car(scolor,sdoors,smpg){
+    var oCar = new Object;
+    oCar.color = scolor;
+    oCar.doors = sdoors;
+    oCar.mpg = smpg;
+    oCar.showColor = function(){ alert(this.color) };
+    return oCar;  
+  }
 
 var mycar = car("red",4,23);
 var youcar= car("black",4,25);
@@ -155,6 +164,7 @@ var youCar = car("black",4,25);
  }
  var myCar = Car("red",4,23);
  var youCar = Car("black",4,25);
+
    下面为您解释上面的代码与工厂方式的差别。首先在构造函数内没有创建对象，而是使用 this 关键字。使用 new  运算符构造函数时，在执行第一行代码前先创建一个对象，只有用 this 才能访问该对象。然后可以直接赋予 this 属性，默认情况下是构造函数的返回值（不必明确使用 return 运算符）。
    现在，用 new 运算符和类名 Car 创建对象，就更像 ECMAScript 中一般对象的创建方式了。
 
@@ -222,7 +232,7 @@ alert(oCar2.drivers);	//输出 "Mike,John,Bill"
       this.color = sColor;  
       this.doors = sDoor;
       this.mpg = sMpg;
-      if(Car._initializaed == "undefined"){  //判断对象有没有初始化，如果没有初始化。创建新的方法
+      if(Car._initialized == "undefined"){  //判断对象有没有初始化，如果没有初始化。创建新的方法
         Car.prototype.showColor = function(){alert(this.color)};
       };
       Car._initialized = true;

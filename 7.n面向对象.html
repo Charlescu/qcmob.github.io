@@ -17,23 +17,94 @@
 
 
 //工厂方式：
-function Car(){
+function car(scolor,sdoors,smpg){
     var obj = new Object;
-    obj.color = "blue";
-    obj.doors = 4;
-    obj.mpg = 25;
-    obj.showColor = function(){ this.color };
+    obj.color = scolor;
+    obj.doors = sdoors;
+    obj.mpg = smpg;
+    obj.showColor = function(){ return this.color  };
     return obj;  
   }
 
-var mycar = Car("green",4.23);
-var yocar = Car("black",4,34);
-     alert(mycar.showColor());  
-     alert(yocar.showColor()); 
+var mycar = car("green",4.23);
+var yocar = car("black",4,34);
+   alert(mycar.showColor()); 
+   alert(yocar.showColor());
+
+//外部定义方法指向对象
+function showColor(){return this.color};
+function car3(scolor,sdoors,smpg){
+  var cars = new Object;
+  cars.color = scolor;
+  cars.doors = sdoors;
+  cars.mpg = smpg;
+  cars.showColor = showColor;
+  return cars;
+}
+ 
+ var mycar = car3("blue",4,23);
+ var youcar = car3("lightblue",4,25);
+  alert(mycar.showColor());
+  alert(youcar.showColor());
+
+//构造函数式
+
+function Car4(scolor,sdoors,smpg){
+  this.color = scolor;
+  this.doors = sdoors;
+  this.mpg = smpg;
+  this.showColor = function(){ return this.color};
+  return this;
+}
+
+var mycar = new Car4("orange",4,23);
+var youcar = new Car4("lightorange",4,25);
+  alert(mycar.showColor());
+  alert(youcar.showColor());
 
 
+//原型方式
+function Car5(){};
+Car5.prototype.color = "red";
+Car5.prototype.doors = 4;
+Car5.prototype.impg = 25;
+Car5.prototype.showColor = function(){ return this.color};
 
-  
+var mycar = new Car5();
+var youcar = new Car5();
+  mycar.color.replace("gray");
+   alert(mycar.showColor());
+   alert(youcar.showColor());
+
+//混合构造函数、原型方式
+
+function Lcar(lcolor,ldoors,lmpg,ldriver){
+  this.color = lcolor;
+  this.doors = ldoors;
+  this.mpg = lmpg;
+  this.driver = ldriver;
+}
+ Lcar.prototype.showColor = function(){return this.color};
+ Lcar.prototype.changeColor = function(){return this.color = "lightgray" };
+ var mylcar = new Lcar("gray",4,24);
+ alert(mylcar.showColor());
+ alert(mylcar.changeColor());
+
+
+ //动态原型
+
+ function Rcar(Rcolor,Rdoors,Rmpg){
+  this.color = Rcolor;
+  this.doors = Rdoors;
+  this.mpg = Rmpg;
+  if(Rcar._initialized = "undefined"){
+    Rcar.prototype.showColor = function(){return this.color};
+  }
+    Rcar._initialized = true;
+ }
+
+  var myRcar = new Rcar("heise",4,25);
+  alert(myRcar.showColor());
 </script>
 </body>
 </html>
