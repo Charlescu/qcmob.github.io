@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="header">
+		<div class="logo"></div>
+		<ul>
+			<li class="list1"></li>
+			<li class="list2"></li>
+			<li class="list3"></li>
+			<li class="list4"></li>
+			<li class="list5"></li>
+			<li class="list6"></li>
+		</ul>
+		<div class="admin"></div>
+	</div>
+	<div class="container">
+		<div class="col-md-1">
+			<ul>
+				<li class="item1"></li>
+				<li class="item2"></li>
+				<li class="item3"></li>
+				<li class="item4"></li>
+				<li class="item5"></li>
+				<li class="item6"></li>
+			</ul>
+		</div>
+		<div class="col-md-9"></div>
+		<div class="col-md-2">
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
