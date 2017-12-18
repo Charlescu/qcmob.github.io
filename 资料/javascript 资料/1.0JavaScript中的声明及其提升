@@ -30,21 +30,21 @@ let声明的变量只在其声明的块或者子块中可用，与var类似，�
 
 例子：
 function bn(){
-	 var a= 1;
-	if(true){
-	 var a= 2;       //相同变量重新赋值
-	 console.log(a); //输出2
-	}
-	console.log(a);  //输出2
+var a= 1;
+if(true){
+var a= 2;       //相同变量重新赋值
+console.log(a); //输出2
+}
+console.log(a);  //输出2
 }
 
 function bn(){
-   let a = 1;
-   if(true){
-   let a = 2;       //不同变量声明并赋值
-   console.log(a);  //输出2 
-   }	
-   console.log(a)   //输出1
+let a = 1;
+if(true){
+let a = 2;       //不同变量声明并赋值
+console.log(a);  //输出2 
+}	
+console.log(a)   //输出1
 }
 
 
