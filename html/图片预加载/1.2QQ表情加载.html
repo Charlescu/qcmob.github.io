@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>Document</title>
+      <style>
+      body,html,ul,li{margin:0px;padding: 0px;}
+      body{background-color: #eee;}
+      .box{margin: 150px 0 0 200px;}
+      a{text-decoration: none;}
+      #face-btn{display: block;background: url(../../img/face.png) no-repeat 0 4px; text-indent: 20px;color:#333;}
+      #face-btn:hover{background-position: 0 -17px;}
+      .panel{display:none;}
+      .loading{width:190px;padding:2px;border:1px solid #ccc;background-color: #fff;text-align: center;}
+      li{display: inline-block;padding:2px;list-style: none;border:1px solid #fff;cursor:pointer;}
+      ul{width:390px;height:100px;padding:5px;overflow:auto;background-color: #fff;}
+      
+      li:hover{border-color: #06c; }
+</style>
+</head>
+<body>
+
+
+  <div class="box">
+    <a href="javascript:;" id="face-btn">表情</a>
+    <div class="panel">
+     <p class="loading">表情加载中... </p>
+        zxcxzvxv
+    </div>
+  </div>
+<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../js/preload.js"></script>
+<script>
+   var $btn = $('#face-btn');
+   var $panel = $('.panel');
+   var imgs = [];
+   for(var i =0;i<132;i++){
+      imgs[i] = '../../img/QQface/'+(i+1)+'.gif';     //添加数组元素为地址。图片路径保存完毕
+   }
+   var len = imgs.length;   //图片数量
+   $btn.on('click',function(e){  //参数e设置禁止事件冒泡
+      e.stopPropagation();      //禁止事件冒泡
+     $panel.show();
+      $.preload(imgs,{
+            all:function(){
+                  var html = '';
+                  html +=   '<ul class="list">';
+                  for(var i = 0; i < len; i++){
+                        html += '<li><img src="'+imgs[i]+'" alt=""></li>';
+                  };
+                  html += '</ul>';
+                  $panel.html(html);
+            }
+      });
+   });
+   $(document).on('click',function(){
+     $panel.hide();
+   });
+</script>
+</body>
+</html>				

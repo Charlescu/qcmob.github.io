@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>图片加载之有序加载</title>
+	<style type="text/css">
+		html,body{width: 100%;height: 100%;}
+	a{text-decoration: none;}
+	.box{	text-align: center;}
+	.btn{display: inline-block;height: 30px; line-height: 30px; border: 1px solid #ccc;background-color: #fff;padding: 0 10px;margin-right: 50px;}
+	.btn:hover{background-color: red;}
+	
+	</style>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/preload.js"></script>
+</head>
+<body>
+	<div class="box">
+		<img src="http://img2.niutuku.com/desk/130126/22/22-niutuku.com-2373.jpg" alt="" id="img" title="" width="1000px"/>
+		<p>
+			<a href="javascript:;" class="btn" data-control="prev">上一页</a>
+			<a href="javascript:;" class="btn" data-control="next">下一页</a>
+		</p>
+	
+	</div>
+	<script>
+		var imgs = ['http://img2.niutuku.com/desk/130126/22/22-niutuku.com-2373.jpg',
+		'https://images.unsplash.com/photo-1490323948794-cc6dde6e8f5b?auto=format&fit=crop&w=1326&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1433259651738-0e74537aa8b5?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1461229813543-5c214846bb3f?auto=format&fit=crop&w=1351&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1464790088272-b8f1f29c48cb?auto=format&fit=crop&w=1267&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1460501501851-d5946a18e552?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1486728297118-82a07bc48a28?auto=format&fit=crop&w=1401&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1484813281551-1b5c7464e83b?auto=format&fit=crop&w=1400&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1502691876148-a84978e59af8?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',];
+		var index = 0;
+		var len = imgs.length;
+		var count = 0;
+		//有序加载
+		load();
+		function load(){
+			var imgObj = new Image();  //第一步
+			$(imgObj).on('load error',function(){
+                 if(count >= len){
+                          //图片加载完成
+                 }else{  
+                 	      //图片还未加载完，调用自身继续加载
+                 	load();
+                 }
+                 count++;
+			});
+
+			imgObj.src = imgs[count];
+		}
+		$('.btn').on('click',function(){
+			if('prev' === $(this).data('control')){
+				index = Math.max(0,--index);
+			}else{
+				index = Math.min(len-1,++index)
+			}
+			$('#img').attr('src',imgs[index]);
+		});
+	</script>
+</body>
+</html>
