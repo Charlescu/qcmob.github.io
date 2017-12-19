@@ -13,7 +13,7 @@
   };
   PreLoad.prototype._unoredered = function(){ //无序加载
       var imgs = this.imgs;  //接收PreLoad的参数imgs
-      var opts = this.opts;  //each方法保存在opts参数上，所以接收opts参数 
+      var opts = this.opts;  //each,all方法保存在opts参数上，所以接收opts参数 
       var count = 0,len = imgs.length;  //定义计数器count和数组长度len
       $.each(imgs,function(i,src){
        	if(typeof src != 'string') return; //判断传递到src的数组元素是否为字符串，不是则返回。防止发生错误
