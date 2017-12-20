@@ -3,14 +3,14 @@
   function PreLoad(imgs,options){
   	this.imgs = (typeof imgs === 'string') ? [imgs] : imgs;
   	this.opts = $.extend({},PreLoad.DEFAULTS,options);
-  	this._unoredered();
+  	this._unordered();
 
   };
 PreLoad.DEFAULTS = {
 	each:null,
 	all:null
 };
-PreLoad.pertotype._unoredered=function(){
+PreLoad.pertotype._unordered=function(){
 	var imgs = this.imgs;
 	var opts = this.opts;
 	var count=0,len = imgs.length;

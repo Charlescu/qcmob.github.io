@@ -34,25 +34,12 @@
 		'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
 		'https://images.unsplash.com/photo-1484813281551-1b5c7464e83b?auto=format&fit=crop&w=1400&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
 		'https://images.unsplash.com/photo-1502691876148-a84978e59af8?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',];
-		var index = 0;
-		var len = imgs.length;
-		var count = 0;
-		//有序加载
-		load();
-		function load(){
-			var imgObj = new Image();  //第一步
-			$(imgObj).on('load error',function(){
-                 if(count >= len){
-                          //图片加载完成
-                 }else{  
-                 	      //图片还未加载完，调用自身继续加载
-                 	load();
-                 }
-                 count++;
-			});
-
-			imgObj.src = imgs[count];
-		}
+		var index = 0,
+		len = imgs.length;
+		$.preload(imgs,{
+           order: 'ordered'
+		});
+		
 		$('.btn').on('click',function(){
 			if('prev' === $(this).data('control')){
 				index = Math.max(0,--index);
