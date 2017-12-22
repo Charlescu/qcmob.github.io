@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+	<script>
+
+
+
+		function bindThis(f, oTarget) {
+			    return function(){
+				        return f.apply(oTarget,arguments);
+			    }
+		}
+          
+        console.log(f.this);
+
+
+	</script>
+</body>
+</html>
