@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0px;pading:0px;}
+		ul{list-style-type: none;}
+		a{text-decoration: none;}
+		.logoBox img {display: inline-block; width:100px;}
+		.todos li{float:left;}
+		.userList li{float:right;}
+	</style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<body>
+	<div class="header">
+		<div class="logoBOx"><img src="" alt="中油平台" title="中油平台"></div>
+
+		<ul class="todos">
+			<li v-for="todo in todos">{{ todo.text }}</li>
+		</ul>
+        <ul class="userList">
+        	<li v-for="todo in lists">{{ todo.text }}</li>
+        </ul>
+	</div>
+</body>
+<script>
+   var imgs = ['http://img2.niutuku.com/desk/130126/22/22-niutuku.com-2373.jpg',
+		'https://images.unsplash.com/photo-1490323948794-cc6dde6e8f5b?auto=format&fit=crop&w=1326&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1433259651738-0e74537aa8b5?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1461229813543-5c214846bb3f?auto=format&fit=crop&w=1351&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1464790088272-b8f1f29c48cb?auto=format&fit=crop&w=1267&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1460501501851-d5946a18e552?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1486728297118-82a07bc48a28?auto=format&fit=crop&w=1401&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1484813281551-1b5c7464e83b?auto=format&fit=crop&w=1400&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',
+		'https://images.unsplash.com/photo-1502691876148-a84978e59af8?auto=format&fit=crop&w=1350&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D',];
+  (function($){
+       function Preload(img,options){
+       	this.imgs = (typeof imgs === 'string') ? [imgs] :imgs;
+       	this.opts = $.extend({},Preload.DEFAULTS,options);
+       };
+       Preload.DEFAULTS = {
+       	each:null,
+       	all:null
+       };
+       Preload.prototype._unordered = function(){
+       	var imgs = this.imgs;
+       	var opts = this.opts;
+       	var count = 0,len = imgs.length;
+       	$.each(imgs,function(i,src){
+         if(typeof imgs != 'string' ){ return};
+         var imgObj = new Image();
+         $(imgObj).on('load',function(){
+         	opts.each && opts.each(count);
+         	if(count>= len-1){
+         		opts.all && opts.all();
+         	}
+         	count ++;
+         });
+         imgObj.src = src;
+       	});
+       };
+      $.extend({
+      	preload:function(imgs,options){
+      		new Preload(imgs,opts);
+      	}
+      });
+  })(jQuery);
+	//<!-- 头部列表-->
+	var topList = new Vue({
+		el:'.todos',
+		data:{
+			todos:[
+           {text:"商户注册"},
+           {text:"常见问题"},
+           {text:"其他"}
+			]
+		}
+	})
+  
+    var userList = new Vue({
+    	el:'.userList',
+    	data:{
+         lists:[
+         	{text:'login'},
+         	{text:'logout'}
+         ]
+    	}
+    })
+
+    var userList = new Vue({
+
+    })
+</script>
+</html>

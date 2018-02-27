@@ -3,7 +3,7 @@
   function PreLoad(imgs,options){  //用面向对象写法来写，首先写构造函数设置两个参数第一个是图片数组，第二个其他参数
       this.imgs = (typeof imgs === 'string') ? [imgs] :imgs;  //判断传进来的是否是字符串，是的话包装为数组，否则传递自身。保存图像完成
       this.opts = $.extend({},PreLoad.DEFAULTS,options);//将options和DEFAULTS融合一下，生成新的对象，原理为后面的options覆盖DEFAULTS生成新的对象，新对象返回给opts
-      if(this.opts.oeder === 'ordered'){
+      if(this.opts.order === 'ordered'){
              this._ordered();
       }else{
         this._unordered();
@@ -15,7 +15,7 @@
     all:null                   //所有图片加载完毕后执行
   };
             //有序加载
-  PreLoad.prototype.oredered = function(){
+  PreLoad.prototype.ordered = function(){
    var imgs = this.imgs,
        opts = this.opts,
        len = imgs.length,
